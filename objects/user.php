@@ -1,6 +1,7 @@
 <?php
 class User{
     //RIO
+    //Cek jadi
     // database connection and table name
     private $conn;
     private $table_name = "user";
