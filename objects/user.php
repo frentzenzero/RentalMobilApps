@@ -92,8 +92,8 @@ class User{
 
     function mail(){
         $email_subject = "Website Contact From:  RentalMobilApps";
-            $headers = "From: rentalmobilapps@rentalmbilapps.thekingcorp.org"."\r\n";
-            $headers .= "Reply-To:noreply@rentalmbilapps.thekingcorp.org" . "\r\n";
+            $headers = "From: rentalmobilapps@rentalmobilapps.thekingcorp.org"."\r\n";
+            $headers .= "Reply-To:noreply@rentalmobilapps.thekingcorp.org" . "\r\n";
             
             
             $message ='<html>';
@@ -213,6 +213,60 @@ class User{
         $stmt->execute();
     
         return $stmt;
+    }
+
+    // delete the product
+    function delete(){
+        
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+    
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+        
+    }
+
+    function login(){
+        $sql = "SELECT password FROM " . $this->table_name . " WHERE email = ?";
+
+        $stmtP = $this->conn->prepare($sql);
+
+        $stmtP->bindParam(1, $this->email);
+
+        $stmtP->execute();
+
+        $row = $stmtP->fetch(PDO::FETCH_ASSOC);
+        $this->password=htmlspecialchars(strip_tags($this->password));
+      if(password_verify( $this->password,$row['password'] )){
+        $sql2 = "SELECT id FROM " . $this->table_name . " WHERE email = ?";
+
+        $stmt = $this->conn->prepare( $sql2 );
+
+        $stmt->bindParam(1, $this->email);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        session_start();
+        $this->id = $row['id'];
+        return true;
+      }else{
+        return false;
+        
+      }
     }
 
     
