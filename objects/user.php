@@ -115,6 +115,31 @@ class User{
             }
     }
 
+    function updateByToken(){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    status=1
+                WHERE
+                    token=:token";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        $this->token=htmlspecialchars(strip_tags($this->token));
+
+        // bind values
+        $stmt->bindParam(":token", $this->token);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
     function readOne(){
  
         // query to read single record
