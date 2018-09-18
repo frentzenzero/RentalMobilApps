@@ -286,6 +286,8 @@ class User{
         session_start();
         $this->id = $row['id'];
         $this->status = $row['status'];
+        $this->nama = $row['nama'];
+        
         return true;
       }else{
         return false;
