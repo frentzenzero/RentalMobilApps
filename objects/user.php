@@ -104,7 +104,7 @@ class User{
                     $message .='</div>';
                     $message .='<div class="mail-body" style="color: black; background-color:  #CFE7EA; width: 100%; padding: 20px;">';
                         $message .='<h1>Hai '.$this->nama.', Silahkan lakukan verifikasi email klik tombol ini </h1>';
-                        $message .='<a href="https://rentalmobilapps.thekingcorp.org//mail/verifikasiEmail.php?token='.$this->token.'"><button style="background-image: linear-gradient(to left, #0025BC , #0071BC); width: 100%; text-align: center; margin: auto; min-height: 40px; color: white; font-size: 30px; cursor: pointer;">Klik disini</button></a>';
+                        $message .='<a href="https://rentalmobilapps.thekingcorp.org//mail/verifikasiEmail.php?token='.$this->token.'"><button style="background-image: linear-gradient(to left, #ADFF2F , #008000); width: 100%; text-align: center; margin: auto; min-height: 40px; color: white; font-size: 30px; cursor: pointer;">Klik disini</button></a>';
                     $message .='</div>';
                 $message .='</div>';
             $message .='</body>';
