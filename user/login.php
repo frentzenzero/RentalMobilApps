@@ -21,6 +21,10 @@ if($product->login()){
      $response["value"] = 200;
      $response["status"]=$product->status;
      $response["nama"]=$product->nama;
+     $response["gender"]=$product->gender;
+     $response["email"]=$product->email;
+     $response["hp"]=$product->hp;
+
    $response["message"] = "Selamat Datang";
    echo json_encode($response);
 }

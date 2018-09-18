@@ -274,7 +274,7 @@ class User{
         $row = $stmtP->fetch(PDO::FETCH_ASSOC);
         $this->password=htmlspecialchars(strip_tags($this->password));
       if(password_verify( $this->password,$row['password'] )){
-        $sql2 = "SELECT id, status FROM " . $this->table_name . " WHERE email = ?";
+        $sql2 = "SELECT id, status,nama,email,gender,hp FROM " . $this->table_name . " WHERE email = ?";
 
         $stmt = $this->conn->prepare( $sql2 );
 
@@ -287,6 +287,11 @@ class User{
         $this->id = $row['id'];
         $this->status = $row['status'];
         $this->nama = $row['nama'];
+        $this->email = $row['emal'];
+        $this->gender = $row['gender'];
+        $this->hp = $row['hp'];
+        
+        
         
         return true;
       }else{
