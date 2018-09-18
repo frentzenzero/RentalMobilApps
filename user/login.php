@@ -25,7 +25,7 @@ if($product->login()){
 }
     
 // if unable to update the product, tell the user
-else{
+else{ 
    $response["value"] = 0;
    $response["message"] = "Email atau Password Salah";
    echo json_encode($response);
