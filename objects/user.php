@@ -2,6 +2,7 @@
 class User{
     //RIO
     //Cek jadi
+    //ini Buar raya
     // database connection and table name
     private $conn;
     private $table_name = "user";
@@ -94,7 +95,8 @@ class User{
         $email_subject = "Website Contact From:  RentalMobilApps";
             $headers = "From: rentalmobilapps@rentalmobilapps.thekingcorp.org"."\r\n";
             $headers .= "Reply-To:noreply@rentalmobilapps.thekingcorp.org" . "\r\n";
-            
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             
             $message ='<html>';
             $message .='<body>';
