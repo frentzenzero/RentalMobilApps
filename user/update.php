@@ -18,8 +18,7 @@ $product->id =$_POST["id"];
  
 $product->email = $_POST["email"]; 
 $product->nama = $_POST["nama"]; 
-$product->password = password_hash($_POST["password"], PASSWORD_DEFAULT); 
-$product->passwordL = $_POST["passwordL"]; 
+
 $product->gender = $_POST["gender"]; 
 $product->hp = $_POST["hp"]; 
 
