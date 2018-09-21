@@ -103,7 +103,7 @@ class Book{
           $stmt = $this->conn->prepare( $query );
 
           // bind id of product to be updated
-          $stmt->bindParam(1, $this->id);
+          $stmt->bindParam(1, $this->pemesan);
 
           // execute query
           $stmt->execute();

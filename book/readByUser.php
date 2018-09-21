@@ -13,7 +13,8 @@ $db = $database->getConnection();
 $book = new Book($db);
  
 // set ID property of user to be edited
-$catatan->id= isset($_GET['pemesan']) ? $_GET['pemesan'] : die();
+$book->pemesan= $_POST["pemesan"];
+
 // read the details of user to be edited
 $stmtBook = $book->readOne();
 $numBook = $stmtBook->rowCount();
