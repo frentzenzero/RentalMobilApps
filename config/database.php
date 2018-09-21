@@ -7,6 +7,14 @@ class Database{
     private $username = "thekingc";
     private $password = "Zn@44N#GxuWw73";
     public $conn;
+
+    // private $host = "localhost";
+    // private $db_name = "thekingc_rentalmobilapps";
+    // private $username = "root";
+    // private $password = "";
+    // public $conn;
+
+    
  
     // get the database connection
     public function getConnection(){
