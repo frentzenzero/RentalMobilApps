@@ -20,7 +20,7 @@ $stmtBook = $book->readOne();
 $numBook = $stmtBook->rowCount();
 echo $book->pemesan;
 // create array
-if($numCatatan>0){
+if($numBook>0){
  
     // products array
     $book_arr=array();
