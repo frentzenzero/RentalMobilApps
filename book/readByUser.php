@@ -18,7 +18,7 @@ $book->pemesan= $_POST["pemesan"];
 // read the details of user to be edited
 $stmtBook = $book->readOne();
 $numBook = $stmtBook->rowCount();
-echo $numBook;
+echo $numBookn;
 // create array
 if($numBook>0){
  
@@ -49,5 +49,5 @@ else{
 
  
 // make it json format
-print_r(json_encode($user_arr));
+print_r(json_encode($book_arr));
 ?>
