@@ -12,6 +12,7 @@ class Book{
     public $transmisi;
     public $bookDate;
     public $returnDate;
+    public $harga;
     public $pemesan;
  
     // constructor with $db as database connection
@@ -49,7 +50,8 @@ class Book{
                  tipeMobil=:tipeMobil, 
                  modelMobli=:modelMobil, 
                  transmisi=:transmisi, 
-                 bookDate=:bookDate, 
+                 bookDate=:bookDate,
+                 returnDate=:returnDate,
                  harga=:harga, 
                  pemesan=:pemesan";
     
