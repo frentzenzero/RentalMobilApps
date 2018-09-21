@@ -16,7 +16,7 @@ $product = new Book($db);
 $stmt = $product->read();
 $num = $stmt->rowCount();
  
-echo ('test');
+
 
 // check if more than 0 record found
 if($num>0){

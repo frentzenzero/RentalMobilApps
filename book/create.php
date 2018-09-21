@@ -13,7 +13,7 @@ $product = new Book($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
- 
+
  
 $product->tipeMobil = $_POST["tipeMobil"];
 $product->modelMobil = $_POST["modelMobil"];
@@ -23,7 +23,7 @@ $product->returnDate = $_POST["returnDate"];
 $product->harga = $_POST["harga"];
 $product->pemesan = $_POST["pemesan"];
 
-// create the product
+
 if($product->create()){
     echo '{';
         echo '"message": "Booking Berhasil Dibuat."';

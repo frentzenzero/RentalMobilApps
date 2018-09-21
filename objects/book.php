@@ -48,25 +48,34 @@ class Book{
                     " . $this->table_name . "
                 SET
                  tipeMobil=:tipeMobil, 
-                 modelMobli=:modelMobil, 
+                 modelMobil=:modelMobil, 
                  transmisi=:transmisi, 
                  bookDate=:bookDate,
                  returnDate=:returnDate,
                  harga=:harga, 
                  pemesan=:pemesan";
-    
+  
         // prepare query
         $stmt = $this->conn->prepare($query);
+
+        // echo ('test');
+// echo($this->tipeMobil);
+// echo($this->modelMobil);
+// echo($this->transmisi);
+// echo($this->bookDate);
+// echo($this->returnDate);
+// echo($this->harga);
+// echo($this->pemesan);
     
         // sanitize
         
-        $this->tipeMobil=htmlspecialchars(strip_tags($this->tipeMobil));
-        $this->modelMobil=htmlspecialchars(strip_tags($this->modelMobil));
-        $this->transmisi=htmlspecialchars(strip_tags($this->transmisi));
-        $this->bookDate=htmlspecialchars(strip_tags($this->bookDate));
-        $this->returnDate=htmlspecialchars(strip_tags($this->returnDate));
-        $this->harga=htmlspecialchars(strip_tags($this->harga));
-        $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
+        // $this->tipeMobil=htmlspecialchars(strip_tags($this->tipeMobil));
+        // $this->modelMobil=htmlspecialchars(strip_tags($this->modelMobil));
+        // $this->transmisi=htmlspecialchars(strip_tags($this->transmisi));
+        // $this->bookDate=htmlspecialchars(strip_tags($this->bookDate));
+        // $this->returnDate=htmlspecialchars(strip_tags($this->returnDate));
+        // $this->harga=htmlspecialchars(strip_tags($this->harga));
+        // $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
 
         // bind values
         $stmt->bindParam(":tipeMobil", $this->tipeMobil);
@@ -80,6 +89,7 @@ class Book{
     
         // execute query
         if($stmt->execute()){
+            $stmt = null;
             return true;
         }
     
