@@ -111,5 +111,74 @@ class Book{
       return $stmt;
      
   }
+  // update the product
+    function update(){
+        
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                tipeMobil=:tipeMobil, 
+                 modelMobil=:modelMobil, 
+                 transmisi=:transmisi, 
+                 bookDate=:bookDate,
+                 returnDate=:returnDate,
+                 harga=:harga, 
+                WHERE
+                    id=:id";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        $this->tipeMobil=htmlspecialchars(strip_tags($this->tipeMobil));
+        $this->modelMobil=htmlspecialchars(strip_tags($this->modelMobil));
+        $this->transmisi=htmlspecialchars(strip_tags($this->transmisi));
+        $this->bookDate=htmlspecialchars(strip_tags($this->bookDate));
+        $this->returnDate=htmlspecialchars(strip_tags($this->returnDate));
+        $this->harga=htmlspecialchars(strip_tags($this->harga));
+        $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind values
+        $stmt->bindParam(":tipeMobil", $this->tipeMobil);
+        $stmt->bindParam(":modelMobil", $this->modelMobil);
+        $stmt->bindParam(":transmisi", $this->transmisi);
+        $stmt->bindParam(":bookDate", $this->bookDate);
+        $stmt->bindParam(":returnDate", $this->returnDate);
+        $stmt->bindParam(":harga", $this->harga);
+        $stmt->bindParam(":pemesan", $this->pemesan);
+        $stmt->bindParam(":id", $this->id);
+
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
+
+    // delete the product
+    function delete(){
+        
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+    
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+    
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+    
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+        
+    }
 }
 
