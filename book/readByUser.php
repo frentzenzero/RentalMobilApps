@@ -18,7 +18,7 @@ $book->pemesan= $_POST["pemesan"];
 // read the details of user to be edited
 $stmtBook = $book->readOne();
 $numBook = $stmtBook->rowCount();
-echo $numBookn;
+
 // create array
 if($numBook>0){
  
