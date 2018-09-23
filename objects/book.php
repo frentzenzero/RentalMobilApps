@@ -123,7 +123,7 @@ class Book{
                  transmisi=:transmisi, 
                  bookDate=:bookDate,
                  returnDate=:returnDate,
-                 harga=:harga, 
+                 harga=:harga 
                 WHERE
                     id=:id";
 
