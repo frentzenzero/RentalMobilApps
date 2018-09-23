@@ -42,7 +42,8 @@ class Book{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                 pesan=:pesaan";
+                 pesan=:pesan,
+                 pemesan=:pemesan";
   
         // prepare query
         $stmt = $this->conn->prepare($query);
