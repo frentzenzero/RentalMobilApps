@@ -18,13 +18,13 @@ $book->pemesan= $_POST["pemesan"];
 // read the details of user to be edited
 $stmtBook = $book->readOne();
 $numBook = $stmtBook->rowCount();
-
+echo $numBookn;
 // create array
 if($numBook>0){
  
     // products array
     $book_arr=array();
-    $book_arr["result"]=array();
+    $book_arr["book"]=array();
 
     while ($rowBook = $stmtBook->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,11 +40,11 @@ if($numBook>0){
             "pemesan" => $pemesan,
          );
          
-        array_push($book_arr["result"], $product_item);
+        array_push($book_arr["book"], $product_item);
     }
 }
 else{
-    $book_arr["result"]=[];
+    $book_arr["book"]=null;
 }
 
  
