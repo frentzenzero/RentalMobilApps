@@ -9,7 +9,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new feedback($db);
+$product = new Feedback($db);
 
 // set ID property of product to be edited
 $product->id = $_POST["id"];
