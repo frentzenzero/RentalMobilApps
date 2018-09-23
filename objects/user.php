@@ -1,4 +1,13 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+
+require '../vendor/autoload.php';
+
 class User{
     //RIO
     //Cek jadi
@@ -92,29 +101,47 @@ class User{
     }
 
     function mail(){
-        $email_subject = "Website Contact From:  RentalMobilApps";
-            $headers = "From: rentalmobilapps@rentalmobilapps.thekingcorp.org"."\r\n";
-            $headers .= "Reply-To:noreply@rentalmobilapps.thekingcorp.org" . "\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            
-            $message ='<html>';
-            $message .='<body>';
-                        $message .='<strong>VERIFIKASI EMAIL DARI <br/>Rental Mobil</strong>';
-                    $message .='</div>';
-                    $message .='<div class="mail-body" style="color: black; background-color:  #CFE7EA; width: 100%; padding: 20px;">';
-                        $message .='<h1>Hai '.$this->nama.', Silahkan lakukan verifikasi email klik tombol ini </h1>';
-                        $message .='<a href="https://rentalmobilapps.thekingcorp.org//mail/verifikasiEmail.php?token='.$this->token.'"><button style="background-image: linear-gradient(to left, #ADFF2F , #008000); width: 100%; text-align: center; margin: auto; min-height: 40px; color: white; font-size: 30px; cursor: pointer;">Klik disini</button></a>';
-                    $message .='</div>';
-                $message .='</div>';
-            $message .='</body>';
-            $message .='</html>';
-            
-            if(mail($this->email,$email_subject,$message,$headers)){
-                return true; 
-            }else{
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'kakuna.rapidplex.com;www.thekingcorp.org';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'rentalmobilapps@thekingcorp.org';                 // SMTP username
+                $mail->Password = 'RentalMobilApps@Theking~18';                           // SMTP password
+                $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 465 ;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('rentalmobilapps@thekingcorp.org', 'Rental Mobil Apps');
+                $mail->addAddress($this->email);               // Name is optional
+                $mail->addReplyTo('noreply@thekingcorp.org', 'noreply');
+                $mail->addCC('rentalmobilapps@thekingcorp.org');
+                $mail->addBCC('rentalmobilapps@thekingcorp.org');
+
+
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Website Contact From:  Rental Mobil Apps';
+                $mail->Body ='<html>';
+                $mail->Body .='<body>';
+                            $mail->Body .='<strong>VERIFIKASI EMAIL DARI <br/>Rental Mobil</strong>';
+                        $mail->Body .='</div>';
+                        $mail->Body .='<div class="mail-body" style="color: black; background-color:  #CFE7EA; width: 100%; padding: 20px;">';
+                            $mail->Body .='<h1>Hai '.$this->nama.', Silahkan lakukan verifikasi email klik tombol ini </h1>';
+                            $mail->Body .='<a href="https://rentalmobilapps.thekingcorp.org//mail/verifikasiEmail.php?token='.$this->token.'"><button style="background-image: linear-gradient(to left, #ADFF2F , #008000); width: 100%; text-align: center; margin: auto; min-height: 40px; color: white; font-size: 30px; cursor: pointer;">Klik disini</button></a>';
+                        $mail->Body .='</div>';
+                    $mail->Body .='</div>';
+                $mail->Body .='</body>';
+                $mail->Body .='</html>';
+
+                $mail->send();
+                return true;
+            } catch (Exception $e) {
                 return false;
             }
+
+
     }
 
     function updateByToken(){
