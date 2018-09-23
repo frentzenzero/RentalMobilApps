@@ -109,13 +109,13 @@ class Feedback{
     
 
     $this->pesan=htmlspecialchars(strip_tags($this->pesan));
-    $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
+    
     
     $this->id=htmlspecialchars(strip_tags($this->id));
 
     // bind values
     $stmt->bindParam(":pesan", $this->pesan);
-    $stmt->bindParam(":pemesan", $this->pemesan);
+    
    
     $stmt->bindParam(":id", $this->id);
 
