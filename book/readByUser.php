@@ -33,7 +33,7 @@ if($numBook>0){
             "id" => $id,
             "tipeMobil" => $tipeMobil,
             "modelMobil" => $modelMobil,
-            "transmisi" => $bookDate,
+            "transmisi" => $transmisi,
             "bookDate" => $bookDate,
             "returnDate" => $returnDate,
             "harga" => $harga,
