@@ -89,21 +89,9 @@ class User{
         // execute query EMAL
         if($stmt->execute()){
             
-            if($this->mail()){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    
-        return false;
-        
-    }
-
-    function mail(){
-        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
-                $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+                $mail->SMTPDebug = 1;                                 // Enable verbose debug output
                 $mail->isSMTP();                                      // Set mailer to use SMTP
                 $mail->Host = 'kakuna.rapidplex.com;www.thekingcorp.org';  // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -140,9 +128,13 @@ class User{
             } catch (Exception $e) {
                 return false;
             }
-
-
+        }
+    
+        return false;
+        
     }
+
+
 
     function updateByToken(){
         // update query
