@@ -90,5 +90,42 @@ class Feedback{
       return $stmt;
      
   }
+
+
+  function update(){
+        
+    // update query
+    $query = "UPDATE
+                " . $this->table_name . "
+            SET
+            pesan=:pesan, 
+             pemesan=:pemesan 
+           
+            WHERE
+                id=:id";
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    
+
+    $this->pesan=htmlspecialchars(strip_tags($this->pesan));
+    $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
+    
+    $this->id=htmlspecialchars(strip_tags($this->id));
+
+    // bind values
+    $stmt->bindParam(":pesan", $this->pesan);
+    $stmt->bindParam(":pemesan", $this->pemesan);
+   
+    $stmt->bindParam(":id", $this->id);
+
+    // execute the query
+    if($stmt->execute()){
+        return true;
+    }
+
+    return false;
+}
 }
 
