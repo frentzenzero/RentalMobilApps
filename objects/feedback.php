@@ -7,7 +7,7 @@ class Book{
  
     // object properties
     public $id;
-    public $feedback;
+    public $pesan;
     public $pemesan;
  
     // constructor with $db as database connection
@@ -42,7 +42,7 @@ class Book{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                 message=:message";
+                 pesan=:pesaan";
   
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -51,11 +51,11 @@ class Book{
     
         // sanitize
         
-        $this->message=htmlspecialchars(strip_tags($this->message));
+        $this->pesan=htmlspecialchars(strip_tags($this->pesan));
         $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
 
         // bind values
-        $stmt->bindParam(":message", $this->message);
+        $stmt->bindParam(":pesan", $this->pesan);
         $stmt->bindParam(":pemesan", $this->pemesan);
     
         // execute query
