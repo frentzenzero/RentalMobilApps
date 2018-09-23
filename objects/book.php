@@ -136,7 +136,7 @@ class Book{
         $this->bookDate=htmlspecialchars(strip_tags($this->bookDate));
         $this->returnDate=htmlspecialchars(strip_tags($this->returnDate));
         $this->harga=htmlspecialchars(strip_tags($this->harga));
-        $this->pemesan=htmlspecialchars(strip_tags($this->pemesan));
+        
         $this->id=htmlspecialchars(strip_tags($this->id));
 
         // bind values
@@ -146,7 +146,7 @@ class Book{
         $stmt->bindParam(":bookDate", $this->bookDate);
         $stmt->bindParam(":returnDate", $this->returnDate);
         $stmt->bindParam(":harga", $this->harga);
-        $stmt->bindParam(":pemesan", $this->pemesan);
+       
         $stmt->bindParam(":id", $this->id);
 
         // execute the query
