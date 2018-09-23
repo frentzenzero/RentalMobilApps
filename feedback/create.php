@@ -15,7 +15,8 @@ $product = new Feedback($db);
 $data = json_decode(file_get_contents("php://input"));
 
  
-$product->message = $_POST["message"];
+$product->pesan = $_POST["pesan"];
+$product->pemesan = $_POST["pemesan"];
 
 if($product->create()){
     echo '{';

@@ -31,7 +31,7 @@ if($numFeedback>0){
         extract($rowFeedback);
         $product_item=array(
             "id" => $id,
-            "feedback" => $feedback,
+            "pesan" => $pesan,
             "pemesan" => $pemesan,
          );
          

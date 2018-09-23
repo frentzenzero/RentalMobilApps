@@ -40,19 +40,11 @@ if($numBook>0){
             "pemesan" => $pemesan,
          );
          
-<<<<<<< HEAD
-        array_push($book_arr["book"], $product_item);
-    }
-}
-else{
-    $book_arr["book"]=null;
-=======
         array_push($book_arr["result"], $product_item);
     }
 }
 else{
     $book_arr["result"]=[];
->>>>>>> 6ee1174d3630ce490ad6d951e61e1cbe00092a32
 }
 
  

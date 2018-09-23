@@ -24,7 +24,7 @@ $product->harga = $_POST["harga"];
 // update the product
 if($product->update()){
     $response["value"] = 200;
-    $response["message"] = "Catatan berhasil Ubah";
+    $response["message"] = "Booking berhasil Ubah";
     echo json_encode($response);
 }
  

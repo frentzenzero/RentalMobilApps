@@ -1,6 +1,5 @@
 <?php
 
-// include database and object files
 include_once '../config/database.php';
 include_once '../objects/feedback.php';
  
@@ -10,22 +9,20 @@ $db = $database->getConnection();
  
 // prepare product object
 $product = new Feedback($db);
-
-// set ID property of product to be edited
+ 
+// set product id to be deleted
 $product->id = $_POST["id"];
-
-$product->pesan = $_POST["pesan"];
-
-// update the product
-if($product->update()){
+ 
+// delete the product
+if($product->delete()){
     $response["value"] = 200;
-    $response["message"] = "Feedback berhasil diubah";
+    $response["message"] = "Feedback Berhasil di hapus";
     echo json_encode($response);
 }
  
-// if unable to update the product, tell the user
+// if unable to delete the product
 else{
-    $response["value"] = o;
+    $response["value"] = 0;
     $response["message"] = "Coba Lagi";
     echo json_encode($response);
 }
