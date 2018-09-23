@@ -98,8 +98,7 @@ class Feedback{
     $query = "UPDATE
                 " . $this->table_name . "
             SET
-            pesan=:pesan, 
-             pemesan=:pemesan 
+            pesan=:pesan
            
             WHERE
                 id=:id";
