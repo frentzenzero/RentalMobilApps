@@ -23,7 +23,7 @@ if($num>0){
  
     // products array
     $products_arr=array();
-    $products_arr["records"]=array();
+    $products_arr["result"]=array();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -44,7 +44,7 @@ if($num>0){
    
 
  
-        array_push($products_arr["records"], $product_item);
+        array_push($products_arr["result"], $product_item);
     }
  
     echo json_encode($products_arr);
