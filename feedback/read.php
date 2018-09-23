@@ -1,5 +1,6 @@
 <?php
 
+ 
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/feedback.php';
@@ -22,7 +23,7 @@ if($num>0){
  
     // products array
     $products_arr=array();
-    $products_arr["records"]=array();
+    $products_arr["result"]=array();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -30,14 +31,15 @@ if($num>0){
 
         $product_item=array(
             "id" => $id,
-            "message" => $message,
+            "feedback" => $feedback,
             "pemesan" => $pemesan,
          );
          
          // "description" => html_entity_decode($description),
    
 
-        array_push($products_arr["records"], $product_item);
+ 
+        array_push($products_arr["result"], $product_item);
     }
  
     echo json_encode($products_arr);

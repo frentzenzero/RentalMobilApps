@@ -1,5 +1,6 @@
 <?php
 
+ 
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/feedback.php';
@@ -23,22 +24,22 @@ if($numFeedback>0){
  
     // products array
     $feedback_arr=array();
-    $feedback_arr["feedback"]=array();
+    $feedback_arr["result"]=array();
 
     while ($rowFeedback = $stmtFeedback->fetch(PDO::FETCH_ASSOC)){
 
         extract($rowFeedback);
         $product_item=array(
             "id" => $id,
-            "message" => $message,
+            "feedback" => $feedback,
             "pemesan" => $pemesan,
          );
          
-        array_push($feedback_arr["feedback"], $product_item);
+        array_push($feedback_arr["result"], $product_item);
     }
 }
 else{
-    $feedback_arr["feedback"]=null;
+    $feedback_arr["result"]=[];
 }
 
  
