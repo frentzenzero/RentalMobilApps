@@ -12,6 +12,8 @@ $db = $database->getConnection();
 $product = new Book($db);
 
 // set ID property of product to be edited
+$product->id = $_POST["id"];
+
 $product->tipeMobil = $_POST["tipeMobil"];
 $product->modelMobil = $_POST["modelMobil"];
 $product->transmisi = $_POST["transmisi"];
