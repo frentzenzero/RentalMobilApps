@@ -1,5 +1,5 @@
 <?php
-class Book{
+class Feedback{
  
     // database connection and table name
     private $conn;
